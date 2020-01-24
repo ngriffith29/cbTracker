@@ -14,37 +14,51 @@ function Interface() {
     headphneJack: 0,
     battery: 0,
     other: 0,
-    six: 0,
-    seven: 0,
-    eight: 0
+  
   });
 
+  const [grade, setGrade] = useState({
+      six: 0,
+      seven: 0,
+      eight: 0
+  })
+
   let handleCart = function(e) {
-    if (e.target.value === "6") {
-      return setChoices({
-        selectValue: "Pick Reason",
-        damageValue: "Pick Reason",
-        submitted: true,
-        default: "Pick Option",
-        screen: 0,
-        keys: 0,
-        trackpad: 0,
-        headphneJack: 0,
-        battery: 0,
-        other: 0,
-        six: +1,
-        seven: 0,
-        eight: 0
-      });
-    } else {
-      return setChoices({
-        selectValue: e.target.value
-      });
-    }
+        if(e.target.value === "6"){
+            return setChoices({
+                selectValue: e.target.value
+              }) & setGrade({six: +1,
+                            seven: 0,
+                            eight: 0
+            })
+        } 
+        
+        else if (e.target.value === "7") {
+            return setChoices({
+                selectValue: e.target.value
+              }) & setGrade({six: 0,
+                            seven: +1,
+                            eight: 0
+            })
+        } else if (e.target.value === "8") {
+            return setChoices({
+                selectValue: e.target.value
+              }) & setGrade({six: 0,
+                            seven: 0,
+                            eight: +1
+            })
+        }
+        
+        
+        //
+        else {
+            return setChoices({
+                selectValue: e.target.value
+              })
+        }
+     
+    
   };
-
-// DAMAGE INFORMATION
-
   let handleDamage = function(e) {
     if (e.target.value === "Broken Screen") {
       return setChoices({
@@ -57,7 +71,8 @@ function Interface() {
         headphneJack: 0,
         battery: 0,
         other: 0,
-        screen: +1
+        screen: +1,
+      
       });
       //
     } else if (e.target.value === "Broken Keys") {
@@ -71,7 +86,8 @@ function Interface() {
         trackpad: 0,
         headphneJack: 0,
         battery: 0,
-        other: 0
+        other: 0,
+     
       });
     } else if (e.target.value === "Won't Charge") {
       return setChoices({
@@ -84,7 +100,8 @@ function Interface() {
         trackpad: 0,
         headphneJack: 0,
         battery: +1,
-        other: 0
+        other: 0,
+      
       });
     } else if (e.target.value === "Trackpad") {
       return setChoices({
@@ -97,7 +114,8 @@ function Interface() {
         trackpad: +1,
         headphneJack: 0,
         battery: 0,
-        other: 0
+        other: 0,
+       
       });
     }
     //
@@ -112,7 +130,8 @@ function Interface() {
         trackpad: 0,
         headphneJack: 0,
         battery: 0,
-        other: +1
+        other: +1,
+      
       });
     }
     //
@@ -120,8 +139,7 @@ function Interface() {
       return setChoices({ ...choices, damageValue: e.target.value });
     }
   };
-
-  console.log(choices.other);
+  console.log(grade.six)
   let buttonSub = function(e) {
     e.preventDefault();
     const item = {
@@ -132,10 +150,10 @@ function Interface() {
       battery: choices.battery,
       trackpad: choices.trackpad,
       other: choices.other,
-      six: choices.six,
-      seven: choices.seven,
-      eight: choices.eight
-
+      six: grade.six,
+      seven: grade.seven,
+      eight: grade.eight,
+    
     };
     checkRef.push().set(item);
     setChoices({
@@ -147,9 +165,7 @@ function Interface() {
       battery: 0,
       trackpad: 0,
       other: 0,
-      six: 0,
-      seven: 0,
-      eight: 0,
+   
     });
   };
 
@@ -166,9 +182,9 @@ function Interface() {
             value={choices.selectValue}
           >
             <option>{choices.default}</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
+            <option>{6}</option>
+            <option>{7}</option>
+            <option>{8}</option>
           </select>
           <hr></hr>
           <label>Select Your Reason For deposit</label>
