@@ -1,0 +1,28 @@
+
+.sel {
+    margin-left: 25%;
+   
+}
+
+.button {
+    margin-top: 25px;
+}
+
+form {
+    width: 50%;
+    margin-top: 15%;
+    margin-left: 25%;
+    border: 2px solid black;
+
+}
+.h {
+    height: 120%;
+    width: 100%;
+    margin-bottom: 1%;
+    background-color: #2d3436;
+}
+h1 {
+    color: #dfe6e9;
+    padding-bottom: 2%;
+
+}

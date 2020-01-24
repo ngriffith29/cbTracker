@@ -1,7 +1,7 @@
 import "../App.css";
 import React, { useState } from "react";
 import { checkRef } from "./firebase";
-
+import  "./style.css"
 function Interface() {
   const [choices, setChoices] = useState({
     selectValue: "Pick Reason",
@@ -171,12 +171,15 @@ function Interface() {
 
   return (
     <div className="App">
-      <h1>Chromebook Deposit Form</h1>
+     
       <form>
         <div className="form-group">
+            <div className="h">
+        <h1>Chromebook Deposit Form</h1>
+        </div>
           <label>Choose what grade you're in</label>
           <select
-            className="form-control w-50 "
+            className="form-control w-50 sel "
             id="cart"
             onChange={handleCart}
             value={choices.selectValue}
@@ -186,10 +189,10 @@ function Interface() {
             <option>{7}</option>
             <option>{8}</option>
           </select>
-          <hr></hr>
+          
           <label>Select Your Reason For deposit</label>
           <select
-            className="form-control w-50 "
+            className="form-control w-50 sel"
             id="cart"
             value={choices.damageValue}
             onChange={handleDamage}
@@ -202,7 +205,7 @@ function Interface() {
             <option>Other</option>
           </select>
 
-          <button className="button" onClick={buttonSub}>
+          <button className="button btn btn-dark btn-lg" onClick={buttonSub}>
             Submit Information
           </button>
         </div>
