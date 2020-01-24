@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { checkRef } from "./firebase";
 import { Bar, Doughnut } from "react-chartjs-2";
+import "./dashboard.css"
 function Dashboard() {
   const [count, setCount] = useState({ items: [] });
   const [total, setTotal] = useState({ screens: 0, Keys: 0 });
@@ -108,6 +109,7 @@ function Dashboard() {
       <Bar
         data={data}
         options={{ maintainAspectRatio: true }}
+        height={80}
       />{" "}
        <h2>Breaks by Grade:</h2>
       <Doughnut width={100} height={50} data={pie} />

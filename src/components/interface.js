@@ -175,7 +175,7 @@ function Interface() {
       <form>
         <div className="form-group">
             <div className="h">
-        <h1>Chromebook Deposit Form</h1>
+        <h1 className='text'>Chromebook Deposit Form</h1>
         </div>
           <label>Choose what grade you're in</label>
           <select
