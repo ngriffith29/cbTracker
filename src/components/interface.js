@@ -7,26 +7,150 @@ function Interface() {
     selectValue: "Pick Reason",
     damageValue: "Pick Reason",
     submitted: true,
-    default: "Pick Option"
+    default: "Pick Option",
+    screen: 0,
+    keys: 0,
+    trackpad: 0,
+    headphneJack: 0,
+    battery: 0,
+    other: 0,
+    six: 0,
+    seven: 0,
+    eight: 0
   });
 
   let handleCart = function(e) {
-    return setChoices({ ...choices, selectValue: e.target.value });
+    if (e.target.value === "6") {
+      return setChoices({
+        selectValue: "Pick Reason",
+        damageValue: "Pick Reason",
+        submitted: true,
+        default: "Pick Option",
+        screen: 0,
+        keys: 0,
+        trackpad: 0,
+        headphneJack: 0,
+        battery: 0,
+        other: 0,
+        six: +1,
+        seven: 0,
+        eight: 0
+      });
+    } else {
+      return setChoices({
+        selectValue: e.target.value
+      });
+    }
   };
+
+// DAMAGE INFORMATION
 
   let handleDamage = function(e) {
-    return setChoices({ ...choices, damageValue: e.target.value });
+    if (e.target.value === "Broken Screen") {
+      return setChoices({
+        selectValue: choices.selectValue,
+        damageValue: e.target.value,
+        submitted: true,
+        default: "Pick Option",
+        keys: 0,
+        trackpad: 0,
+        headphneJack: 0,
+        battery: 0,
+        other: 0,
+        screen: +1
+      });
+      //
+    } else if (e.target.value === "Broken Keys") {
+      return setChoices({
+        selectValue: choices.selectValue,
+        damageValue: e.target.value,
+        submitted: true,
+        default: "Pick Option",
+        screen: 0,
+        keys: +1,
+        trackpad: 0,
+        headphneJack: 0,
+        battery: 0,
+        other: 0
+      });
+    } else if (e.target.value === "Won't Charge") {
+      return setChoices({
+        selectValue: choices.selectValue,
+        damageValue: e.target.value,
+        submitted: true,
+        default: "Pick Option",
+        screen: 0,
+        keys: 0,
+        trackpad: 0,
+        headphneJack: 0,
+        battery: +1,
+        other: 0
+      });
+    } else if (e.target.value === "Trackpad") {
+      return setChoices({
+        selectValue: choices.selectValue,
+        damageValue: e.target.value,
+        submitted: true,
+        default: "Pick Option",
+        screen: 0,
+        keys: 0,
+        trackpad: +1,
+        headphneJack: 0,
+        battery: 0,
+        other: 0
+      });
+    }
+    //
+    else if (e.target.value === "Other") {
+      return setChoices({
+        selectValue: choices.selectValue,
+        damageValue: e.target.value,
+        submitted: true,
+        default: "Pick Option",
+        screen: 0,
+        keys: 0,
+        trackpad: 0,
+        headphneJack: 0,
+        battery: 0,
+        other: +1
+      });
+    }
+    //
+    else {
+      return setChoices({ ...choices, damageValue: e.target.value });
+    }
   };
 
+  console.log(choices.other);
   let buttonSub = function(e) {
     e.preventDefault();
     const item = {
       reason: choices.damageValue,
-      teacher: choices.selectValue
+      grade: choices.selectValue,
+      screen: choices.screen,
+      keys: choices.keys,
+      battery: choices.battery,
+      trackpad: choices.trackpad,
+      other: choices.other,
+      six: choices.six,
+      seven: choices.seven,
+      eight: choices.eight
+
     };
     checkRef.push().set(item);
-    setChoices({ selectValue: "", damageValue: "", submitted: false });
-    alert(`${choices.selectValue} ${choices.damageValue}`);
+    setChoices({
+      selectValue: "",
+      damageValue: "",
+      submitted: false,
+      screen: 0,
+      keys: 0,
+      battery: 0,
+      trackpad: 0,
+      other: 0,
+      six: 0,
+      seven: 0,
+      eight: 0,
+    });
   };
 
   return (
@@ -34,7 +158,7 @@ function Interface() {
       <h1>Chromebook Deposit Form</h1>
       <form>
         <div className="form-group">
-          <label>Select Whose Cart your chromebook belongs too</label>
+          <label>Choose what grade you're in</label>
           <select
             className="form-control w-50 "
             id="cart"
@@ -42,10 +166,9 @@ function Interface() {
             value={choices.selectValue}
           >
             <option>{choices.default}</option>
-            <option>Emily Freitag</option>
-            <option>Santoro</option>
-            <option>Warner</option>
-            <option>Baltzell</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
           </select>
           <hr></hr>
           <label>Select Your Reason For deposit</label>
@@ -58,7 +181,8 @@ function Interface() {
             <option>{choices.default}</option>
             <option>Broken Screen</option>
             <option>Broken Keys</option>
-            <option>Broken Case</option>
+            <option>Won't Charge</option>
+            <option>Trackpad</option>
             <option>Other</option>
           </select>
 
