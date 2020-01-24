@@ -101,7 +101,7 @@ function Dashboard() {
 
   console.log(count.items);
   return (
-    <div>
+    <div className="dispaly">
       <div className="jumbotron jumbotron-fluid">
         <h1>Bellevue City Schools Chromebook Breakge Dashboard</h1>
       </div>
@@ -112,7 +112,10 @@ function Dashboard() {
         height={80}
       />{" "}
        <h2>Breaks by Grade:</h2>
-      <Doughnut width={100} height={50} data={pie} />
+      <Doughnut width={50} height={10} data={pie} />
+    <div>
+    </div>
+    <p>Handcrafted by Nathan Griffith</p>
     </div>
   );
 }
